@@ -8,7 +8,6 @@ class SignIn extends React.Component {
     constructor(props) {
         super(props);
 
-
         this.state = {
             email: "",
             password: ""
@@ -24,6 +23,7 @@ class SignIn extends React.Component {
             }
         )
     }
+    
     handleChange = event => {
         console.log("Event Listening");
         const { value, name } = event.target;
