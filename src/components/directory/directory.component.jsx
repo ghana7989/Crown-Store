@@ -32,6 +32,7 @@ class Directory extends React.Component {
                     size: 'large',
                     id: 4,
                     linkUrl: 'womens',
+                    // eslint-disable-next-line no-dupe-keys
                     size: "large"
                 },
                 {
@@ -40,6 +41,7 @@ class Directory extends React.Component {
                     size: 'large',
                     id: 5,
                     linkUrl: 'mens',
+                    // eslint-disable-next-line no-dupe-keys
                     size: "large"
                 }
             ]
