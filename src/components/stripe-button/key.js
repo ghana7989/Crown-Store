@@ -1,0 +1,3 @@
+const KEY = "pk_test_51HOSZ1KNVMV3dsJIYovfIjFwiOd4smhvLQXvpCjGE02eoyqPUr3iSLFbfhmWs5YkoK36Acbepvbf5Dza7ptkJ74000caFcuXxt";
+
+export default KEY;
