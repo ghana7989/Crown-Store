@@ -46,6 +46,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
+          {/* Route Automatically passes three props {match , location , history} */}
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route
