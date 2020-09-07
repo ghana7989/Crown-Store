@@ -18,7 +18,7 @@ var config = {
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return
 
-    const userRef = await firestore.doc(`users/${userAuth.uid}`);
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
     const snapShot = await userRef.get();
 
     if (!snapShot.exists) {
@@ -41,6 +41,38 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 
 firebase.initializeApp(config)
+
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+    const collelctionsRef = firestore.collection(collectionKey)
+    const batch = firestore.batch()
+
+    objectsToAdd.forEach(obj => {
+        const newDocumentRef = collelctionsRef.doc()
+        batch.set(newDocumentRef, obj)
+    })
+    // batch.commit() returns a promise. we are returning it so that when we call this function
+    // we can .then and check wether the files are uploaded or not
+    // if .then is null then it completed with no errors if not we are fucked up
+    return await batch.commit()
+}
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+    const transformedCollection = collections.docs.map(doc => {
+        const { title, items } = doc.data()
+
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        }
+    })
+    console.log(transformedCollection)
+    return transformedCollection.reduce((acc, collection) => {
+        acc[collection.title.toLowerCase()] = collection
+        return acc
+    }, {})
+}
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
