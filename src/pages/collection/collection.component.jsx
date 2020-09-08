@@ -5,7 +5,8 @@ import { selectSingleCollection } from "../../redux/shop/shop.selectors"
 import { connect } from 'react-redux';
 import CollectionItem from "../../components/collection-item/collection-item.component"
 
-const CollectionPage = ({ collection }) => {
+const CollectionPage = ({ collection,isLoading }) => {
+    console.log(isLoading)
     const { title, items } = collection
     console.log(collection);
     return (
