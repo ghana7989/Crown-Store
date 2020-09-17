@@ -43,7 +43,7 @@ const SignUp = ({ signUpStart }) => {
   };
 
 
-  const { displayName, email, password, confirmPassword } = this.state;
+  const { displayName, email, password, confirmPassword } = userCredentials ;
   return (
     <div className='sign-up'>
       <h2 className='title'>I do not have a account</h2>
